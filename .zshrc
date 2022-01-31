@@ -10,6 +10,7 @@ alias model="php artisan make:model"
 alias mware="php artisan make:middleware"
 alias migratation="php artisan make:migration"
 
+alias tinker="php artisan tinker"
 
 
 
