@@ -9,6 +9,7 @@ alias controller="php artisan make:controller"
 alias model="php artisan make:model"
 alias mware="php artisan make:middleware"
 alias migration="php artisan make:migration"
+alias pam="php artisan migrate"
 
 alias tinker="php artisan tinker"
 
