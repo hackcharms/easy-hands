@@ -1,0 +1,53 @@
+$break-points:(sm:600,md:960,lg:1264,xl:1904);
+
+$properties:(
+font-size:(
+    name:"text",
+    suffix:"px !important",
+    values:(
+        10,
+        12,
+        )
+    ),
+padding-top:(
+    name:"pt",
+    suffix:"px !important",
+    values:(
+        1,
+        2,
+        3
+    )
+  ),
+  display:(
+    name:"d",
+    suffix:" !important",
+    values:("flex","inline","block")
+    )
+);
+
+@mixin createStyle($properties,$breakPointName:""){
+     @each $property,$options in $properties{
+         $valueSuffix:map-get($options,suffix);
+         @each $value in map-get($options,values){
+             @if $breakPointName!=""{
+              .#{map-get($options,name)}-#{$breakPointName}-#{$value}{
+                 #{$property}:#{$value}#{$valueSuffix};
+             }   
+             }
+             @else{
+              .#{map-get($options,name)}-#{$value}{
+                 #{$property}:#{$value}#{$valueSuffix};
+             }   
+             }
+         }
+     }
+}
+
+@include createStyle($properties,"md");
+
+@each $key,$value in $break-points{
+    @media (min-width:#{$value}px){
+        @include createStyle($properties,$key);
+    }
+}
+
